@@ -3,7 +3,7 @@
 # Distribution
 FROM ubuntu:16.04
 
-MAINTAINER Victor Cruz
+# MAINTAINER Victor Cruz
 
 RUN apt-get update
 
