@@ -23,12 +23,13 @@ int main (int argc, char *argv[]) {
 
     // Obtener param. del usuario
     NS_LOG_INFO("Obteniendo parámetro de usuario");
-    printf("\n# paquetes a intercambiar: "); 
-    string buffer;
-    getline(cin, buffer);
-    cout<<"Se ingreso: \""<<buffer<<"\""<<endl;
+    // printf("\n# paquetes a intercambiar: "); 
+    // string buffer;
+    // getline(cin, buffer);
+    // cout<<"Se ingreso: \""<<buffer<<"\""<<endl;
     NS_LOG_INFO("Cast de String a Int");
-    int numPackage = system(buffer.c_str());
+    // int numPackage = system(buffer.c_str());
+    int numPackage = 5;
 
     Time::SetResolution (Time::NS);
     LogComponentEnable ("UdpEchoClientApplication", LOG_LEVEL_INFO);
@@ -76,6 +77,11 @@ int main (int argc, char *argv[]) {
     ApplicationContainer clientApps = echoClient.Install (nodes.Get (0));
     clientApps.Start (Seconds (2.0));
     clientApps.Stop (Seconds (10.0));
+
+    AsciiTraceHelper ascii;
+    pointToPoint.EnableAsciiAll(ascii.CreateFileStream("scratch/myfirst.tr"));
+
+    pointToPoint.EnablePcapAll ("scratch/myfirst");
 
     NS_LOG_INFO("Corriendo simulación");
     Simulator::Run ();
