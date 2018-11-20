@@ -24,9 +24,7 @@ using namespace ns3;
 
 NS_LOG_COMPONENT_DEFINE ("FirstScriptExample");
 
-int
-main (int argc, char *argv[])
-{
+int main1 (int argc, char *argv[]) {
   CommandLine cmd;
   cmd.Parse (argc, argv);
   
